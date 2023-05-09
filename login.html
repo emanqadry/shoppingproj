@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body >
+
+    <div class="headersection">
+        <div>
+             <img src="assets/logo.png" alt="logo" class="headerimg">
+            <img src="assets/logotext.png" alt="logo" class="headerimg">
+            </div>
+            <img src="assets/profilimg.png" alt="profilimg" id="loginimg" class="headerimg">
+       </div>
+
+    <div class="maindivligin" >
+        <div class="centerdiv">
+            <div>
+                <h1>Hello Again!</h1>
+                <p>
+                    Welcome Back You’ve Been Missed!
+                </p>
+            </div>
+
+            <p> To login enter Your email address and password</p>
+
+
+            
+        
+            <p  class="emil" > Email Address </p>
+            <input class="inputlabel" type="text" name="Email id" id="Emailid">
+            <p class="emil"> Password </p>
+            <input class="inputlabel" type="text" name="password id" id="passwordid"> 
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+              <br>
+
+              <button class="seebutn" id="butnclic" onclick="butonclik">  Login  </button>
+
+
+        </div>
+    </div>
+    <script>
+   
+       document.getElementById("butnclic").onclick = function () {
+       
+        
+         let  email1=document.getElementById("Emailid").value +"";
+        let password1=document.getElementById("passwordid").value+"";
+        alert(email1+" 000"+ password1);
+ 
+        fetch('https://dummyjson.com/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({
+    
+               username:email1,
+               password:password1,
+                       // expiresInMins: 60, // optional
+                 })
+            })
+             .then((response) => response.json())
+             . then((data) => {
+                          console.log("Success: ", data);
+                          
+                      });
+             
+             
+
+    };
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bodyhome">
+        <div class="headersection">
+          <div>
+               <img src="assets/logo.png" alt="logo" class="headerimg">
+              <img src="assets/logotext.png" alt="logo" class="headerimg">
+              </div>
+              <img src="assets/profilimg.png" alt="profilimg" id="loginimg" class="headerimg">
+         </div>
+
+          <div class="hometitle" style="background-image: url('assets/bgheader.png');">
+            <img src="assets/he.png" alt="img">
+            <p  class="title">Get 50% Off on <br> Selected categoriesr</p>
+            <img src="assets/headerimg2.png" alt="imgg">
+          </div>
+
+         </div>
+
+         <div class="productbody">
+            <div >
+                <h1> Products</h1>
+            </div>
+             
+            <div class="products">
+              <div  class="displyproduct">
+                 <div id="productitem" class="prodimg"  > 
+                 
+                  </div>
+                </div>  
+
+                          <script>
+                                fetch('https://dummyjson.com/products')
+                                .then((res) => res.json())
+                                .then((result) => {
+                                         console.log(result);
+                                         let output=" ";
+                                        
+                                         for (var item of result.products) {
+                                            console.log(item.title );
+                                            output =`
+                                            <div  style="display: flex; flex-direction:column ; flex-wrap: wrap;"
+                                             width="100px" height="150px" id="productitem"  > 
+                  
+                                            <img  width="100px" height="150px" src=" ${item.thumbnail}" alt="pppd"  > 
+                                               <div class="prodname">
+                                                  <p>${item.title }</p>
+                                                      <p> ${item.price }</p>
+                                                     </div>
+                                                  <div width="100px"> <p > ${item.description}  </p></div>
+                                                     </div>
+                                            `;
+                                            
+                                            document.getElementById("productitem").innerHTML+=output;
+                                        }
+                      
+                                        })
+                                        .catch(error => {
+                                          console.log(error);
+                                               })
+
+                                               const list = document.querySelectorAll('.prodimg');
+                                                 list.forEach ((item,index)=>{
+
+                                               item.addEventListener("click",()=>{
+                                                 
+                                                  location.href ="./productdetials.html";
+                                                     }
+                                                  )  }
+                                                        );
+                                            
+                    </script>
+
+             </div>
+            <div>
+
+               <div>
+                <button class="seebutn" id="butnclic" onclick="butonclik">See More</button>
+               </div>
+               <script type="text/javascript">
+                
+                document.getElementById("butnclic").onclick = function () {
+                    
+                 location.href ="./products.html";
+                };
+                document.getElementById("loginimg").onclick = function () {
+                    
+                    location.href ="./login.html";
+                   };
+                   
+                
+                   </script>
+
+            </div>
+             
+
+         </div>
+
+    </div>
+</body>
+</html>

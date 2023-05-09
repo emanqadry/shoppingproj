@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="headersection">
+    <div>
+         <img src="assets/logo.png" alt="logo" class="headerimg">
+        <img src="assets/logotext.png" alt="logo" class="headerimg">
+        </div>
+        <img src="assets/profilimg.png" alt="profilimg" id="loginimg" class="headerimg">
+   </div>
+   
+    <div>
+        <h1> All Products </h1> 
+
+        <div  class="products">
+             
+            <div id="productitem" class="prodimg"> 
+                <img src="assets/prod1.png" alt="pppd" > 
+                <div class="prodname">
+                  <p id="productname">prodname</p>
+                  <p> price 5$</p>
+                  </div>
+                 <p> detals productffghkfjncnxxc </p>
+                 
+               </div>
+
+               <script>
+                   
+          
+                fetch('https://dummyjson.com/products')
+                .then((res) => res.json())
+                .then((result) => {
+                         console.log(result);
+                         let output=" ";
+
+                         for (var item of result.products) {
+                            console.log(item.title );
+                            output =`
+                            <div id="${item.id}" style="display: flex; flex-direction: row;
+                            flex-wrap: wrap;"  > 
+                            <img  src=" ${item.thumbnail}" alt="pppd"  > 
+                               <div class="prodname">
+                                  <p >${item.title }</p>
+                                      <p> ${item.price }</p>
+                                     </div>
+                                   <p> ${item.description} </p>
+                                     </div>
+                            `;
+                            document.getElementById("productitem").innerHTML+=output;       
+                       }
+
+                       const list = document.querySelectorAll('.prodimg');
+                       list.forEach ((item,index)=>{
+                        item.addEventListener("click",()=>{
+                          location.href ="./productdetials.html";
+                        })
+                       }
+                       );
+                     
+                      })
+                        .catch(error => {
+                          console.log(error);
+                               })
+                            
+
+                  </script>
+        
+
+        </div>
+    </div>
+   
+</body>
+</html>
